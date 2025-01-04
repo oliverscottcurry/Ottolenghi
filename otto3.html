@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Ottolenghi Salad Maker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .salad-container {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+            display: inline-block;
+            min-width: 300px;
+        }
+        .generate-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        .generate-btn:hover {
+            background-color: #45a049;
+        }
+        .ingredient-list, .method {
+            margin-top: 20px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Random Ottolenghi Salad Maker</h1>
+    <p>Click the button to generate a delicious Ottolenghi-style salad!</p>
+    <div class="salad-container">
+        <button class="generate-btn" onclick="generateSalad()">Generate Salad</button>
+        <div class="ingredient-list" id="saladIngredients"></div>
+        <div class="method" id="saladMethod"></div>
+    </div>
+
+    <script>
+        const greens = ["spinach leaves", "rocket", "kale", "mixed leaves", "watercress"];
+        const grains = ["quinoa", "farro", "bulgar wheat", "couscous", "barley"];
+        const vegetables = ["roasted sweet potatoes", "grilled zucchini", "cherry tomatoes", "carrots", "beetroot"];
+        const proteins = ["chickpeas", "feta cheese", "halloumi", "toasted almonds", "boiled eggs"];
+        const dressings = ["tahini dressing", "lemon vinaigrette", "pomegranate molasses", "yogurt mint dressing", "honey mustard dressing"];
+        const wildcards = ["candied orange peel", "crushed pretzels", "toasted coconut flakes", "dark chocolate shavings", "popcorn", "fried bread cubes", "edible flowers", "spicy wasabi peas"];
+
+        function getRandomItem(arr) {
+            return arr[Math.floor(Math.random() * arr.length)];
+        }
+
+        function generateSalad() {
+            const base = getRandomItem(greens);
+            const grain = getRandomItem(grains);
+            const vegetable = getRandomItem(vegetables);
+            const protein = getRandomItem(proteins);
+            const dressing = getRandomItem(dressings);
+            const wildcard = getRandomItem(wildcards);
+
+            const ingredients = `
+                <strong>Ingredients:</strong><br>
+                - ${base}<br>
+                - ${grain}<br>
+                - ${vegetable}<br>
+                - ${protein}<br>
+                - ${dressing}<br>
+                - ${wildcard}
+            `;
+
+            const method = `
+                <strong>Method:</strong><br>
+                Take a handful of ${base} as the base. Cook and cool some ${grain}, then add it to the greens. 
+                Toss in sliced ${vegetable} and sprinkle with ${protein}. Drizzle generously with ${dressing}. 
+                For an extra wild twist, top it all with ${wildcard}. Serve immediately and enjoy your unique Ottolenghi-style salad!
+            `;
+
+            document.getElementById('saladIngredients').innerHTML = ingredients;
+            document.getElementById('saladMethod').innerHTML = method;
+        }
+    </script>
+
+</body>
+</html>
