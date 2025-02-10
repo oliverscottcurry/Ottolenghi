@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Ottolenghi Salad Maker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Playfair Display', serif;
+            background-color: #fafafa;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #4CAF50;
+        }
+        p {
+            font-family: 'Roboto', sans-serif;
+            color: #555;
+        }
+        .salad-container {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            width: 80%;
+            max-width: 600px;
+        }
+        .generate-btn {
+            padding: 12px 24px;
+            font-size: 18px;
+            font-family: 'Roboto', sans-serif;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        .generate-btn:hover {
+            background-color: #45a049;
+        }
+        .ingredient-list, .method {
+            margin-top: 20px;
+            text-align: left;
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Random Ottolenghi Salad Maker</h1>
+    <p>Click the button to generate a delicious Ottolenghi-style salad!</p>
+
+    <div class="salad-container">
+        <button class="generate-btn" onclick="generateSalad()">Generate Salad</button>
+        <div class="ingredient-list" id="saladIngredients"></div>
+        <div class="method" id="saladMethod"></div>
+    </div>
+
+    <script>
+        const greens = ["spinach leaves", "rocket", "kale", "mixed leaves", "watercress", "arugula", "radicchio", "butter lettuce", "frisée", "baby gem"];
+        const grains = ["quinoa", "farro", "bulgar wheat", "couscous", "barley", "black rice", "freekeh", "wild rice", "millet", "red lentils"];
+        const vegetables = ["roasted sweet potatoes", "grilled zucchini", "cherry tomatoes", "carrots", "beetroot", "roasted red peppers", "fennel", "grilled asparagus", "roasted cauliflower", "butternut squash"];
+        const proteins = ["chickpeas", "feta cheese", "halloumi", "toasted almonds", "boiled eggs", "grilled tofu", "seared salmon", "shredded chicken", "black beans", "pecans"];
+        const dressings = ["tahini dressing", "lemon vinaigrette", "pomegranate molasses", "yogurt mint dressing", "honey mustard dressing", "balsamic reduction", "green goddess dressing", "orange miso dressing", "garlic aioli", "harissa yogurt"];
+        const wildcards = ["candied orange peel", "crushed pretzels", "toasted coconut flakes", "dark chocolate shavings", "popcorn", "fried bread cubes", "edible flowers", "spicy wasabi peas", "pickled watermelon rind", "caramelized onions", "seaweed flakes", "crunchy peanut brittle", "chili honey drizzle", "crushed tortilla chips", "sumac-spiced pistachios", "grilled peaches", "black garlic paste", "smoked salt flakes", "shaved white truffle"];
+
+        function getRandomItem(arr) {
+            return arr[Math.floor(Math.random() * arr.length)];
+        }
+
+        function generateSalad() {
+            const base = getRandomItem(greens);
+            const grain = getRandomItem(grains);
+            const vegetable = getRandomItem(vegetables);
+            const protein = getRandomItem(proteins);
+            const dressing = getRandomItem(dressings);
+            const wildcard = getRandomItem(wildcards);
+
+            document.getElementById('saladIngredients').innerHTML = `<strong>Ingredients:</strong><br>- ${base}<br>- ${grain}<br>- ${vegetable}<br>- ${protein}<br>- ${dressing}<br>- ${wildcard}`;
+            document.getElementById('saladMethod').innerHTML = `<strong>Method:</strong><br>Take a handful of ${base} as the base. Cook and cool some ${grain}, then add it to the greens. Toss in sliced ${vegetable} and sprinkle with ${protein}. Drizzle generously with ${dressing}. For an extra wild twist, top it all with ${wildcard}. Serve immediately and enjoy your unique Ottolenghi-style salad!`;
+        }
+    </script>
+
+</body>
+</html>
